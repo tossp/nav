@@ -2,7 +2,7 @@
 // Copyright @ 2018-present xiejiahe. All rights reserved.
 // See https://github.com/xjh22222228/nav
 
-import { Injectable } from '@angular/core'
+import { ChangeDetectorRef, Injectable } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
 import { websiteList, settings } from 'src/store'
 import {
@@ -33,7 +33,8 @@ export class CommonService {
   overIndex = Number.MAX_SAFE_INTEGER
   title: string = settings.title.trim().split(/\s/)[0]
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute,
+    ) {
     const init = () => {
       this.activatedRoute.queryParams.subscribe(() => {
         const { id, page, q } = queryString()

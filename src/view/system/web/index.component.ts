@@ -2,7 +2,7 @@
 // Copyright @ 2018-present xiejiahe. All rights reserved.
 // See https://github.com/xjh22222228/nav
 
-import { Component } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { INavProps, INavTwoProp, INavThreeProp, IWebProps } from 'src/types'
@@ -69,6 +69,7 @@ import config from '../../../../nav.config.json'
   selector: 'app-admin',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class WebpComponent {
   $t = $t
@@ -97,7 +98,8 @@ export default class WebpComponent {
     private fb: FormBuilder,
     private modal: NzModalService,
     private notification: NzNotificationService,
-    private message: NzMessageService
+    private message: NzMessageService,
+    private cdr: ChangeDetectorRef,
   ) {
     this.validateForm = this.fb.group({
       title: ['', [Validators.required]],
@@ -427,6 +429,7 @@ export default class WebpComponent {
         })
       })
     }
+    this.cdr.markForCheck()
   }
 
   // 删除一级分类

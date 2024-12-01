@@ -2,7 +2,7 @@
 // Copyright @ 2018-present xiejiahe. All rights reserved.
 // See https://github.com/xjh22222228/nav
 
-import { Component } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import {
   Router,
@@ -41,6 +41,7 @@ import event from 'src/utils/mitt'
   selector: 'app-xiejiahe',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   isLogin: boolean = isLogin
@@ -50,6 +51,7 @@ export class AppComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private i18n: NzI18nService,
+    private cdr: ChangeDetectorRef,
     private message: NzMessageService,
     private notification: NzNotificationService
   ) {
@@ -71,7 +73,12 @@ export class AppComponent {
 
   ngOnInit() {
     this.goRoute()
-    this.activatedRoute.queryParams.subscribe(setLocation)
+    this.activatedRoute.queryParams.subscribe({next:()=>{
+      setLocation()
+      setTimeout(() => {
+        this.cdr.markForCheck()
+      }, 1000);
+    }})
 
     if (getLocale() === 'zh-CN') {
       this.i18n.setLocale(zh_CN)
@@ -122,10 +129,12 @@ export class AppComponent {
         this.fetchIng = false
         event.emit('WEB_FINISH')
         window.__FINISHED__ = true
+        this.cdr.markForCheck()
       })
     } else {
       fetchWeb().finally(() => {
         this.fetchIng = false
+        this.cdr.markForCheck()
       })
     }
   }
