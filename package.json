@@ -7,7 +7,7 @@
     "start": "pnpm run build-start && ng serve --port=7001",
     "build-start": "ts-node ./scripts/start.mjs",
     "setup": "pnpm run build-start && ts-node ./scripts/build.mjs",
-    "build-gh-pages": "pnpm run setup && ng build --base-href ./ --index src/index.html",
+    "build-gh-pages": "pnpm run setup && ng build --base-href / --index src/index.html",
     "build": "pnpm run setup && ng build --index src/index.html",
     "watch": "ng build --watch --configuration development",
     "update": "git pull && (git remote add upstream https://gitee.com/xiejiahe/nav.git || true) && git fetch upstream main && git merge upstream/main --allow-unrelated-histories --no-edit && git push",
@@ -45,8 +45,7 @@
     "rough-notation": "^0.5.1",
     "rxjs": "^7.8.1",
     "tailwindcss": "^3.4.15",
-    "tslib": "^2.8.1",
-    "zone.js": "~0.14.0"
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.0.0",

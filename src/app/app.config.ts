@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core'
+import { ApplicationConfig, provideExperimentalZonelessChangeDetection, provideZoneChangeDetection } from '@angular/core'
 import { registerLocaleData } from '@angular/common'
 import zh from '@angular/common/locales/zh'
 import { provideRouter } from '@angular/router'
@@ -36,6 +36,7 @@ const icons: IconDefinition[] = [
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideExperimentalZonelessChangeDetection(),
     provideNzIcons(icons),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
