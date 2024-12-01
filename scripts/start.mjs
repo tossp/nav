@@ -377,10 +377,6 @@ try {
       src: 'https://gcore.jsdelivr.net/gh/xjh22222228/nav-image@image/nav-1717494364392-ad.jpg',
       url: 'https://baidu.com',
     },
-    {
-      src: 'https://gcore.jsdelivr.net/gh/xjh22222228/public@gh-pages/img/10.png',
-      url: '',
-    },
   ]
   settings.superImages ??= defImgs
   settings.lightImages ??= defImgs
