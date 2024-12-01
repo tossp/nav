@@ -338,7 +338,7 @@ try {
   settings.footerContent ??= `
 <div class="dark-white">
   <div>共收录$\{total\}个网站</div>
-  <div>Copyright © 2018-$\{year} $\{hostname}, All Rights Reserved</div>  
+  <div>Copyright © 2018-$\{year} $\{hostname}, All Rights Reserved</div>
 </div>
 `.trim()
   settings.showThemeToggle ??= true
@@ -375,7 +375,7 @@ try {
   const defImgs = [
     {
       src: 'https://gcore.jsdelivr.net/gh/xjh22222228/nav-image@image/nav-1717494364392-ad.jpg',
-      url: 'https://haokawx.lot-ml.com/Product/index/454266',
+      url: 'https://baidu.com',
     },
     {
       src: 'https://gcore.jsdelivr.net/gh/xjh22222228/public@gh-pages/img/10.png',
