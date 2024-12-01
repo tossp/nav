@@ -13,7 +13,6 @@ import history from 'connect-history-api-fallback'
 import compression from 'compression'
 import nodemailer from 'nodemailer'
 import dayjs from 'dayjs'
-import getWebInfo from 'info-web'
 import yaml from 'js-yaml'
 import {
   getWebCount,
@@ -22,6 +21,7 @@ import {
   writeSEO,
   writeTemplate,
 } from '../../scripts/util.mjs'
+import getWebInfo from '../../scripts/info-web.mjs'
 
 const joinPath = (p) => {
   return path.resolve(process.cwd(), p)

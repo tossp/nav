@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 import LOAD_MAP from './loading.mjs'
 import utc from 'dayjs/plugin/utc.js'
 import timezone from 'dayjs/plugin/timezone.js'
-import getWebInfo from 'info-web'
+import getWebInfo from './info-web.mjs'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
